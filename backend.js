@@ -5,7 +5,7 @@ const mysql = require('mysql2');
 const multer = require('multer');
 const fs = require('fs');
 
-const port = 3005;
+//const port = 3005;
 
 // MySQL database configuration
 const database = mysql.createConnection({
@@ -30,7 +30,6 @@ database.connect((error) => {
 
 // Use multer to handle file uploads and store them temporarily
 const upload = multer({ dest: 'uploads/' });
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from 'public' directory
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // Add this to handle JSON requests
@@ -123,10 +122,10 @@ app.get('/login', (req, res) => {
     });
 });
 
-app.get('/about', (req, res) => {
+/*app.get('/about', (req, res) => {
     const filePath = path.join(__dirname, 'about.html');
     res.sendFile(filePath);
-});
+});*/
 
 app.get('/contact', (req, res) => {
     const filePath = path.join(__dirname, 'contact.html');
@@ -326,6 +325,6 @@ app.get('/image', (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+app.listen(2005, () => {
+    console.log(`Server is running on port 2005`);
 });
